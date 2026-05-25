@@ -1,0 +1,56 @@
+{
+  "name": "@sudonym-btc/marketplace-evm",
+  "version": "0.1.0",
+  "description": "Nostr-agnostic EVM escrow, swap, validation, and account-abstraction engine for marketplace payments.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudonym-btc/marketplace-evm.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./aa": {
+      "types": "./dist/aa/index.d.ts",
+      "import": "./dist/aa/index.js"
+    },
+    "./boltz": {
+      "types": "./dist/boltz/index.d.ts",
+      "import": "./dist/boltz/index.js"
+    },
+    "./escrow": {
+      "types": "./dist/escrow/index.d.ts",
+      "import": "./dist/escrow/index.js"
+    },
+    "./swaps": {
+      "types": "./dist/swaps/index.d.ts",
+      "import": "./dist/swaps/index.js"
+    },
+    "./validation": {
+      "types": "./dist/validation/index.d.ts",
+      "import": "./dist/validation/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check": "tsc --noEmit",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "boltz-core": "^5.0.0",
+    "permissionless": "^0.3.5",
+    "viem": "^2.51.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
