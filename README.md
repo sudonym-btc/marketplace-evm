@@ -1,4 +1,4 @@
-# marketplace-evm
+# marketplace-evm-ts
 
 `@sudonym-btc/marketplace-evm` is a Nostr-agnostic EVM payment engine for
 marketplaces. It owns EVM escrow validation, escrow lifecycle calls,

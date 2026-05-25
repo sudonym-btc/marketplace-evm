@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sudonym-btc/marketplace-evm.git"
+    "url": "git+https://github.com/sudonym-btc/marketplace-evm-ts.git"
   },
   "files": [
     "dist"
