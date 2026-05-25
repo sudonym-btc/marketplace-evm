@@ -1,6 +1,6 @@
 import type { Log } from 'viem'
 import { getAddress, parseEventLogs } from 'viem'
-import { multiEscrowAbi } from '@sudonym-btc/marketplace-contracts'
+import { multiEscrowAbi } from '@sudonym-btc/marketplace-evm-contracts'
 
 import type { EvmChainConfig } from '../types.js'
 import { normalizeAddress, normalizeBytes32 } from '../utils/hex.js'

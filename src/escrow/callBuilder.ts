@@ -1,5 +1,5 @@
 import { encodeFunctionData } from 'viem'
-import { multiEscrowAbi } from '@sudonym-btc/marketplace-contracts'
+import { multiEscrowAbi } from '@sudonym-btc/marketplace-evm-contracts'
 
 import { erc20Abi } from '../contracts/erc20.js'
 import type { NamedEvmCall } from '../types.js'
