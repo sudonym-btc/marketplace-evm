@@ -1,7 +1,7 @@
 {
   "name": "@sudonym-btc/marketplace-evm",
   "version": "0.1.0",
-  "description": "Nostr-agnostic EVM escrow, swap, validation, and account-abstraction engine for marketplace payments.",
+  "description": "Nostr-agnostic EVM escrow validation, swaps, and account-abstraction engine for marketplace payments.",
   "type": "module",
   "license": "MIT",
   "repository": {
@@ -31,10 +31,6 @@
     "./swaps": {
       "types": "./dist/swaps/index.d.ts",
       "import": "./dist/swaps/index.js"
-    },
-    "./validation": {
-      "types": "./dist/validation/index.d.ts",
-      "import": "./dist/validation/index.js"
     }
   },
   "scripts": {

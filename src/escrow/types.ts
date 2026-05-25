@@ -1,4 +1,8 @@
 import type { EvmAddress, EvmAmount, EvmCall, EvmHex, NamedEvmCall } from '../types.js'
+import type {
+  EvmEscrowPaymentValidationRequest,
+  EvmEscrowPaymentValidationResult,
+} from '../validation/types.js'
 
 export type EvmEscrowFeePolicy = {
   ppm: number
@@ -59,7 +63,13 @@ export type EvmEscrowCallBuilder = {
   withdraw(params: EvmWithdrawParams): NamedEvmCall
 }
 
-export type EvmEscrowService = EvmEscrowCallBuilder & {
+export type EvmEscrowValidator = {
+  validate(request: EvmEscrowPaymentValidationRequest): Promise<EvmEscrowPaymentValidationResult>
+}
+
+export type EvmEscrowClient = EvmEscrowCallBuilder & EvmEscrowValidator
+
+export type EvmEscrowService = EvmEscrowClient & {
   execute(calls: NamedEvmCall[], chainId: number, operationId?: string): Promise<{ txHash: string }>
 }
 

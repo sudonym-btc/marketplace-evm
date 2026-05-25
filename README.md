@@ -40,6 +40,28 @@ const evm = createMarketplaceEvmClient({
   executor,
   boltz,
 })
+
+const validation = await evm.escrow.validate({
+  chainId,
+  txHash,
+  tradeId,
+  contractAddress,
+  sellerAddress,
+  arbiterAddress,
+  tokenAddress,
+  paymentAmount,
+})
+
+const calls = evm.escrow.createTrade({
+  tradeId,
+  buyerAddress,
+  sellerAddress,
+  arbiterAddress,
+  tokenAddress,
+  paymentAmount,
+  contractAddress,
+  unlockAt,
+})
 ```
 
 ## Current Status

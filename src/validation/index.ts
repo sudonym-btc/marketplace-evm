@@ -1,2 +1,2 @@
 export * from './types.js'
-export * from './escrowPaymentValidator.js'
+export { createEvmEscrowValidator } from './escrowPaymentValidator.js'

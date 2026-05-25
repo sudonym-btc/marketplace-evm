@@ -1,3 +1,5 @@
 export * from './types.js'
 export * from './fees.js'
 export * from './callBuilder.js'
+export * from '../validation/types.js'
+export { createEvmEscrowValidator } from '../validation/escrowPaymentValidator.js'

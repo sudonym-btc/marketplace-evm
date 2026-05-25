@@ -54,5 +54,5 @@ export type EvmEscrowPaymentValidationResult = {
 }
 
 export type EvmEscrowPaymentValidator = {
-  validatePayment(request: EvmEscrowPaymentValidationRequest): Promise<EvmEscrowPaymentValidationResult>
+  validate(request: EvmEscrowPaymentValidationRequest): Promise<EvmEscrowPaymentValidationResult>
 }

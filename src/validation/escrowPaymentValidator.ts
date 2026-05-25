@@ -74,13 +74,13 @@ function decodeTradeCreated(request: EvmEscrowPaymentValidationRequest, logs: Lo
   return null
 }
 
-export function createEvmEscrowPaymentValidator(
+export function createEvmEscrowValidator(
   options: EvmEscrowPaymentValidatorOptions,
 ): EvmEscrowPaymentValidator {
   const chains = new Map(options.chains.map(chain => [chain.chainId, chain]))
 
   return {
-    async validatePayment(request) {
+    async validate(request) {
       const chain = chains.get(request.chainId)
       if (!chain) {
         return {

@@ -4,6 +4,7 @@ import { test } from 'node:test'
 import {
   MemoryOperationStore,
   calculateEscrowFee,
+  createMarketplaceEvmClient,
   multiEscrowAbi,
   multiEscrowRuntimeBytecodeHash,
   normalizeBytes32,
@@ -47,4 +48,35 @@ test('re-exports the shared MultiEscrow contract artifact', () => {
   assert.equal(tradeCreated.inputs[3].name, 'buyer')
   assert.equal(tradeCreated.inputs[4].name, 'arbiter')
   assert.match(multiEscrowRuntimeBytecodeHash, /^0x[0-9a-f]{64}$/)
+})
+
+test('places escrow validation on the escrow client namespace', async () => {
+  const evm = createMarketplaceEvmClient({
+    chains: [],
+    operationStore: new MemoryOperationStore(),
+    executor: {
+      async getAddress() {
+        return '0x0000000000000000000000000000000000000000'
+      },
+      async execute() {
+        throw new Error('not used')
+      },
+    },
+  })
+
+  assert.equal('validation' in evm, false)
+  assert.equal(typeof evm.escrow.validate, 'function')
+
+  const result = await evm.escrow.validate({
+    chainId: 33,
+    txHash: `0x${'1'.repeat(64)}`,
+    tradeId: `0x${'2'.repeat(64)}`,
+    contractAddress: '0x0000000000000000000000000000000000000000',
+    sellerAddress: '0x0000000000000000000000000000000000000000',
+    arbiterAddress: '0x0000000000000000000000000000000000000000',
+    tokenAddress: '0x0000000000000000000000000000000000000000',
+    paymentAmount: { value: 1n, denomination: 'RBTC', decimals: 18 },
+  })
+
+  assert.equal(result.status, 'unverifiable')
 })
