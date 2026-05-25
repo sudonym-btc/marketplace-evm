@@ -71,3 +71,19 @@ builders are shaped for the MultiEscrow contract described by the marketplace
 escrow NIP. Swap and AA modules expose stable interfaces and operation records
 so real Boltz/Pimlico implementations can be filled in without changing the
 Nostr-facing adapter API.
+
+## Integration Tests
+
+The package carries `sudonym-btc/marketplace-evm-stack` as a test submodule so
+it can be tested without Hostr:
+
+```sh
+git submodule update --init --recursive
+test/stack/scripts/up.sh
+test/stack/scripts/wait.sh
+npm run test:integration
+```
+
+The tests also work against a sibling or Hostr-level stack checkout. If no
+generated stack config file is found, they fall back to the default local stack
+ports and compute the deployed MultiEscrow runtime hash from the chain.
